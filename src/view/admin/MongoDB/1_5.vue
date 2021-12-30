@@ -1,0 +1,65 @@
+<template>
+  <div>
+          <el-form ref="form" :model="form" label-width="80px">
+  <el-form-item label="中文名">
+    <el-input v-model="form.chineseName"></el-input>
+  </el-form-item>
+  <el-form-item label="英文名">
+    <el-input v-model="form.englishName"></el-input>
+  </el-form-item>
+  <el-form-item label="地区">
+    <el-input v-model="form.region"></el-input>
+  </el-form-item>
+  <el-form-item label="性别">
+    <el-input v-model="form.gender"></el-input>
+  </el-form-item>
+  <el-form-item label="排序方式">
+    <el-input v-model="form.orderField"></el-input>
+  </el-form-item>
+  <el-form-item label="排序种类">
+    <el-input v-model="form.orderDirection"></el-input>
+  </el-form-item>
+  <el-form-item label="页码">
+    <el-input v-model="form.pageNumber"></el-input>
+  </el-form-item>
+  <el-form-item label="页面大小">
+    <el-input v-model="form.pagerSize"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="getData">立即查询</el-button>
+    <el-button>取消</el-button>
+  </el-form-item>
+</el-form>
+    <el-table :data="tableData" style="width: 100%">
+      <el-table-column prop="chineseName" label="ID" width="180"></el-table-column>
+      <el-table-column prop="englishName" label="Name" width="180"></el-table-column>
+    </el-table>
+  </div>
+</template>
+<style>
+
+</style>
+<script>
+export default {
+  name: '1_5',
+  data () {
+    return {
+      tableData: [
+        {
+        }],
+      form: {}
+    }
+  },
+  created () {
+    // this.getData()
+  },
+  methods: {
+    getData () {
+      this.postRequest('/api/v1/staffs', this.form).then(res => {
+        console.log(res.data.list)
+        this.tableData = res.data.list
+      })
+    }
+  }
+}
+</script>
