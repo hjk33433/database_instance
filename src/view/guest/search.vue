@@ -90,7 +90,6 @@ export default {
   },
   methods: {
     getMovieDetail () {
-
     },
     onSubmit () {
       this.postRequest('/api/v1/movies', this.form).then(res => {

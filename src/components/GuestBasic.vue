@@ -100,9 +100,9 @@ export default {
       page: 1
     }
   },
-  created () { this.getGneres() },
+  created () { this.getGenres() },
   methods: {
-    getGneres () {
+    getGenres () {
       this.getRequest('/api/v1/genres').then(res => {
         this.genres = res.data.list
       })
